@@ -1,12 +1,32 @@
+import Image from "next/image";
+import { HERO_CONTENT } from "@/data/ui";
+
 export default function Hero() {
   return (
-      <section className="bg-slate-900 text-white py-32 px-6 text-center">
-        <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight">
-          L'Éveil des Sens
+    <section className="relative h-[85vh] w-full flex items-center justify-center text-white">
+      <Image 
+        src={HERO_CONTENT.image}
+        alt={HERO_CONTENT.title}
+        fill 
+        priority 
+        className="object-cover"
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60" />
+
+      <div className="relative z-10 text-center px-6">
+        <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 drop-shadow-lg">
+          {HERO_CONTENT.title}
         </h1>
-        <p className="text-slate-300 text-xl max-w-2xl mx-auto font-light">
-          Découvrez un refuge d'exception où le luxe rencontre la sérénité.
+        <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto drop-shadow-md">
+          {HERO_CONTENT.subtitle}
         </p>
-      </section>
+        
+        <button className="mt-10 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-all active:scale-95 shadow-xl">
+          {HERO_CONTENT.cta}
+        </button>
+      </div>
+    </section>
   );
 }

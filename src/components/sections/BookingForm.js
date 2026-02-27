@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import { useState } from 'react';
 import { ROOMS } from '@/data/roomsData';
 
@@ -64,7 +65,14 @@ export default function BookingForm() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {ROOMS.map(room => (
                             <div key={room.id} className="border p-5 rounded-xl flex flex-col items-center hover:shadow-md transition">
-                                <span className="text-4xl mb-3">{room.image}</span>
+                                <div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg">
+                                <Image
+                                    src={room.image}
+                                    alt={room.name}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                </div>
                                 <h3 className="font-bold text-gray-900">{room.name}</h3>
                                 <p className="text-gray-500 text-sm mb-2">{room.price}€ / nuit</p>
                                 <p className="text-blue-700 font-extrabold text-lg mb-4">

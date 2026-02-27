@@ -3,11 +3,11 @@ import { ROOMS } from '@/data/roomsData';
 
 export default function Rooms() {
   return (
-    <section className="py-24 bg-gray-100 px-6">
+    <section className="py-24 bg-gray-50 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 font-serif">Nos Chambres</h2>
-          <div className="h-1 w-20 bg-blue-600 mx-auto mt-4"></div>
+          <h2 className="text-4xl font-serif text-gray-900 italic">Nos Chambres</h2>
+          <div className="h-px w-20 bg-blue-200 mx-auto mt-6"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-1 gap-12">

@@ -6,7 +6,7 @@ import Rooms from '@/components/sections/Room';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-white">
 
       {/* Hero */}
       <Hero />
@@ -15,6 +15,8 @@ export default function Home() {
       <section className="max-w-5xl mx-auto px-6 -mt-16 relative z-10">
       <BookingForm />
       </section>
+      {/* Texte */}
+      <About />
 
       {/* Services */}
       <Features />
@@ -22,8 +24,6 @@ export default function Home() {
       {/* Chambres */}
       <Rooms />
 
-      {/* Texte */}
-      <About />
 
     </main>
   );
