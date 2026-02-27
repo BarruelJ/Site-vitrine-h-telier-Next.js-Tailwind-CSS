@@ -1,11 +1,6 @@
 "use client";
 import { useState } from 'react';
-
-const ROOMS = [
-    { id: 1, name: "Chambre Vue Mer", price: 120, image: "🌊" },
-    { id: 2, name: "Suite Panoramique", price: 250, image: "✨" },
-    { id: 3, name: "Chambre Standard", price: 85, image: "🛏️" },
-];
+import { ROOMS } from '@/data/roomsData';
 
 export default function BookingForm() {
     const [checkIn, setCheckIn] = useState("");
