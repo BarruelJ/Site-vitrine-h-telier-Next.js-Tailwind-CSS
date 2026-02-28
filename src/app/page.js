@@ -6,7 +6,7 @@ import Rooms from '@/components/sections/Room';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-hotel-sable overflow-x-hidden" >
 
       {/* Hero */}
       <Hero />

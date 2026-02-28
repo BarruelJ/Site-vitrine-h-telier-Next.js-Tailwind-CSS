@@ -2,15 +2,15 @@ import { ABOUT_CONTENT } from "@/data/ui";
 
 export default function About() {
   return (
-    <section className="py-24 bg-white text-center">
+    <section className="py-24 md:py-32  bg-hotel-sable text-center">
       <div className="max-w-3xl mx-auto px-6">
         
-        <span className="text-blue-600 font-bold tracking-widest uppercase text-xs">
+        <span className="text-hotel-gold uppercase tracking-[0.3em] text-[10px] font-sans block mb-4">
           {ABOUT_CONTENT.badge}
         </span>
         
        
-        <h2 className="text-4xl md:text-5xl font-serif mt-4 text-slate-900 italic">
+        <h2 className="text-5xl md:text-6xl font-serif text-hotel-abysse max-w-2xl leading-tight italic">
           {ABOUT_CONTENT.title}
         </h2>
         

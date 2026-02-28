@@ -28,22 +28,22 @@ export default function BookingForm() {
         <div className="bg-white p-6 rounded-xl shadow-lg border-gray-100">
             <div className="flex flex-wrap gap-4 items-end">
                 <div className="flex flex-col gap-1">
-                    <label className="text-xs font-bold uppercase text-gray-500">Arrivée</label>
+                    <label className="text-xs font-bold uppercase text-hotel-abysse">Arrivée</label>
                     <input
                         type="date" min={today} value={checkIn}
                         onChange={(e) => {
                             setCheckIn(e.target.value);
                             if (checkOut && e.target.value >= checkOut) setCheckOut("");
                         }}
-                        className="border p-2 rounded text-black"
+                        className="border p-2 rounded text-gray-500"
                     />
                 </div>
                 <div className="flex flex-col gap-1">
-                    <label className="text-xs font-bold uppercase text-gray-500">Départ</label>
+                    <label className="text-xs font-bold uppercase text-hotel-abysse">Départ</label>
                     <input
                         type="date" min={checkIn || today} value={checkOut}
                         onChange={(e) => setCheckOut(e.target.value)}
-                        className="border p-2 rounded text-black"
+                        className="border p-2 rounded text-gray-500"
                     />
                 </div>
                 <button
@@ -51,7 +51,7 @@ export default function BookingForm() {
                         if (nights > 0) setShowRooms(true);
                         else alert("Choisissez des dates valides");
                     }}
-                    className="bg-blue-600 text-white px-6 py-2 rounded font-semibold hover:bg-blue-700 transition"
+                    className="bg-hotel-abysse text-white px-6 py-2 rounded-full font-semibold hover:bg-hotel-gold transition"
                 >
                     Voir les disponibilités
                 </button>

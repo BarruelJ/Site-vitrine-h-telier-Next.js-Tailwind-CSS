@@ -4,14 +4,14 @@ import { HERO_CONTENT } from "@/data/ui";
 export default function Hero() {
   return (
     <section className="relative h-[85vh] w-full flex items-center justify-center text-white">
-      <Image 
+      <Image
         src={HERO_CONTENT.image}
         alt={HERO_CONTENT.title}
-        fill 
-        priority 
+        fill
+        priority
         className="object-cover"
       />
-      
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60" />
 
@@ -22,8 +22,8 @@ export default function Hero() {
         <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto drop-shadow-md">
           {HERO_CONTENT.subtitle}
         </p>
-        
-        <button className="mt-10 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-all active:scale-95 shadow-xl">
+
+        <button className="mt-10 bg-hotel-white/10 backdrop-blur-md text-hotel-white px-8 py-4 rounded-full font-sans uppercase tracking-[0.2em] text-xs border border-hotel-white/30 hover:border-hotel-gold transition-all duration-500 active:scale-95 cursor-pointer">
           {HERO_CONTENT.cta}
         </button>
       </div>
