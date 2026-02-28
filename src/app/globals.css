@@ -1,9 +1,20 @@
 @import "tailwindcss";
 
-/* Basic settings */
+@theme {
+  /* root couleurs */
+  --color-hotel-sable: #f9f7f2;
+  --color-hotel-abysse: #1a2b3c;
+  --color-hotel-gold: #d4af37;
+  --color-hotel-white: #ffffff;
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+  /* Typo */
+  --font-serif: var(--font-playfair), serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+
+@layer base {
+  body {
+    @apply bg-hotel-sable text-hotel-abysse font-sans antialiased;
+  }
 }

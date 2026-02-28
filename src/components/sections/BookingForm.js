@@ -25,7 +25,7 @@ export default function BookingForm() {
     };
 
     return (
-        <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+        <div className="bg-white p-6 rounded-xl shadow-lg border-gray-100">
             <div className="flex flex-wrap gap-4 items-end">
                 <div className="flex flex-col gap-1">
                     <label className="text-xs font-bold uppercase text-gray-500">Arrivée</label>
