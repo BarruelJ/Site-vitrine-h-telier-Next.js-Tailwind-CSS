@@ -51,7 +51,7 @@ export default function BookingForm() {
                         if (nights > 0) setShowRooms(true);
                         else alert("Choisissez des dates valides");
                     }}
-                    className="bg-hotel-abysse text-white px-6 py-2 rounded-full font-semibold hover:bg-hotel-gold transition"
+                    className="bg-hotel-abysse text-white px-6 py-2 rounded-full font-semibold hover:bg-hotel-gold transition cursor-pointer"
                 >
                     Voir les disponibilités
                 </button>

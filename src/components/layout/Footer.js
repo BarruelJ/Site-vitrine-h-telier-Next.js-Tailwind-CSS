@@ -2,35 +2,33 @@ import { FOOTER_SECTIONS } from "@/data/layoutData";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300 py-16 px-6 border-t border-slate-800">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer className="bg-hotel-abysse text-hotel-white/60 py-24 px-6 border-t border-hotel-white/5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
 
-        {/* Brand */}
-        <div className="col-span-1 md:col-span-1">
-          <h3 className="text-white font-serif font-bold text-xl mb-4">MER & HORIZON</h3>
-          <p className="text-sm leading-relaxed">
+        <div className="flex flex-col gap-6">
+          <h3 className="text-hotel-white font-serif text-2xl tracking-[0.15em] uppercase italic">
+            Mer & Horizon
+          </h3>
+          <p className="text-xs leading-relaxed font-sans max-w-xs tracking-wide">
             Une parenthèse enchantée sur la côte d'Opale. Luxe, calme et volupté depuis 1954.
           </p>
         </div>
 
         {FOOTER_SECTIONS.map((section, index) => (
           <div key={index}>
-            
-            <h4 className="text-white font-bold mb-4">{section.title}</h4>
-
-            <ul className="space-y-2 text-sm">
-              
-              {section.links && section.links.map((link) => (
+            <h4 className="text-hotel-gold font-sans text-[10px] uppercase tracking-[0.3em] mb-8">
+              {section.title}
+            </h4>
+            <ul className="flex flex-col gap-4 text-xs font-sans tracking-wide">
+              {section.links?.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="hover:text-white transition">
+                  <a href={link.href} className="hover:text-hotel-gold transition-colors duration-300">
                     {link.label}
                   </a>
                 </li>
               ))}
-
-              
-              {section.infos && section.infos.map((info, i) => (
-                <li key={i}>{info}</li>
+              {section.infos?.map((info, i) => (
+                <li key={i} className="cursor-default">{info}</li>
               ))}
             </ul>
           </div>
@@ -38,27 +36,29 @@ export default function Footer() {
 
         {/* Newsletter */}
         <div>
-          <h4 className="text-white font-bold mb-4">Newsletter</h4>
-          <p className="text-sm mb-4">Recevez nos offres exclusives.</p>
-          <div className="flex">
+          <h4 className="text-hotel-gold font-sans text-[10px] uppercase tracking-[0.3em] mb-8">
+            Newsletter
+          </h4>
+          <p className="text-xs mb-6 tracking-wide">Recevez nos invitations exclusives.</p>
+          <div className="relative group">
             <input
               type="email"
-              placeholder="Votre email"
-              className="bg-slate-800 border-none p-2 rounded-l text-sm w-full focus:ring-1 focus:ring-blue-500"
+              placeholder="votre@email.com"
+              className="bg-transparent border-b border-hotel-white/20 py-2 text-xs w-full focus:outline-none focus:border-hotel-gold transition-colors font-sans placeholder:text-hotel-white/30"
             />
-            <button className="bg-blue-600 p-2 rounded-r hover:bg-blue-700 transition">
-              OK
+            <button className="absolute right-0 bottom-2 text-[10px] uppercase tracking-widest font-bold text-hotel-gold hover:text-hotel-white transition-colors cursor-pointer">
+              S'inscrire
             </button>
           </div>
         </div>
-
       </div>
 
-      <div className="max-w-6xl mx-auto mt-16 pt-8 border-t border-slate-800 text-xs flex flex-col md:flex-row justify-between gap-4">
+      {/* Bottom Bar */}
+      <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-hotel-white/5 text-[10px] uppercase tracking-[0.15em] flex flex-col md:flex-row justify-between items-center gap-8">
         <p>© 2026 Hôtel Mer & Horizon. Tous droits réservés.</p>
-        <div className="flex gap-6">
-          <a href="#" className="hover:text-white">Mentions légales</a>
-          <a href="#" className="hover:text-white">Politique de confidentialité</a>
+        <div className="flex gap-10">
+          <a href="#" className="hover:text-hotel-gold transition-colors">Mentions légales</a>
+          <a href="#" className="hover:text-hotel-gold transition-colors">Confidentialité</a>
         </div>
       </div>
     </footer>
