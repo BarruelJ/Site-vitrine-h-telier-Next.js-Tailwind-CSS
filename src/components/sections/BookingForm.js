@@ -1,94 +1,90 @@
 "use client";
-import Image from 'next/image';
 import { useState } from 'react';
+import Image from 'next/image';
 import { ROOMS } from '@/data/roomsData';
 
 export default function BookingForm() {
     const [checkIn, setCheckIn] = useState("");
     const [checkOut, setCheckOut] = useState("");
     const [showRooms, setShowRooms] = useState(false);
-    const today = new Date().toISOString().split("T")[0];
-    const [selectedRoom, setSelectedRoom] = useState(null);
 
-    const calculateNights = () => {
+    const nights = (() => {
         if (!checkIn || !checkOut) return 0;
-        const diff = new Date(checkOut) - new Date(checkIn);
+        const diff = new Date(checkOut).getTime() - new Date(checkIn).getTime();
         return Math.ceil(diff / (1000 * 60 * 60 * 24));
-    };
-
-    const nights = calculateNights();
-
-    const handleSelect = (room) => {
-        setSelectedRoom(room);
-        const total = room.price * nights;
-        alert(`Confirmation : ${room.name}\nSéjour de ${nights} nuits\nMontant total : ${total}€`);
-    };
+    })();
 
     return (
-        <div className="bg-white p-6 rounded-xl shadow-lg border-gray-100">
-            <div className="flex flex-wrap gap-4 items-end">
-                <div className="flex flex-col gap-1">
-                    <label className="text-xs font-bold uppercase text-hotel-abysse">Arrivée</label>
-                    <input
-                        type="date" min={today} value={checkIn}
-                        onChange={(e) => {
-                            setCheckIn(e.target.value);
-                            if (checkOut && e.target.value >= checkOut) setCheckOut("");
-                        }}
-                        className="border p-2 rounded text-gray-500"
-                    />
+        <div className="relative z-20 max-w-5xl mx-auto -mt-12 bg-white p-8 md:p-10 shadow-sm border border-hotel-abysse/5">
+            {/* Formulaire Principal */}
+            <div className="flex flex-col md:flex-row gap-8 items-end justify-between">
+                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-hotel-gold">Arrivée</label>
+                        <input
+                            type="date" value={checkIn}
+                            onChange={(e) => setCheckIn(e.target.value)}
+                            className="bg-transparent border-b border-hotel-abysse/10 py-2 text-sm text-hotel-abysse focus:outline-none focus:border-hotel-gold transition-colors cursor-pointer"
+                        />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-hotel-gold">Départ</label>
+                        <input
+                            type="date" value={checkOut}
+                            onChange={(e) => setCheckOut(e.target.value)}
+                            className="bg-transparent border-b border-hotel-abysse/10 py-2 text-sm text-hotel-abysse focus:outline-none focus:border-hotel-gold transition-colors cursor-pointer"
+                        />
+                    </div>
                 </div>
-                <div className="flex flex-col gap-1">
-                    <label className="text-xs font-bold uppercase text-hotel-abysse">Départ</label>
-                    <input
-                        type="date" min={checkIn || today} value={checkOut}
-                        onChange={(e) => setCheckOut(e.target.value)}
-                        className="border p-2 rounded text-gray-500"
-                    />
-                </div>
+
                 <button
-                    onClick={() => {
-                        if (nights > 0) setShowRooms(true);
-                        else alert("Choisissez des dates valides");
-                    }}
-                    className="bg-hotel-abysse text-white px-6 py-2 rounded-full font-semibold hover:bg-hotel-gold transition cursor-pointer"
+                    onClick={() => nights > 0 ? setShowRooms(true) : alert("Sélectionnez vos dates")}
+                    className="w-full md:w-auto bg-hotel-abysse text-hotel-white px-10 py-4 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-hotel-gold transition-all duration-500 cursor-pointer"
                 >
-                    Voir les disponibilités
+                    Vérifier
                 </button>
             </div>
 
-            {showRooms && nights > 0 && (
-                <div className="mt-8 pt-8 border-t border-gray-100">
-                    <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">
-                        Résultats pour {nights} {nights > 1 ? 'nuits' : 'nuit'}
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {ROOMS.map(room => (
-                            <div key={room.id} className="border p-5 rounded-xl flex flex-col items-center hover:shadow-md transition">
-                                <div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg">
-                                <Image
-                                    src={room.image}
-                                    alt={room.name}
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
+            {/* Animation */}
+            <div className={`grid transition-[grid-template-rows,margin] duration-700 ease-in-out ${showRooms && nights > 0 ? 'grid-rows-[1fr] mt-16' : 'grid-rows-[0fr] mt-0'
+                }`}>
+                <div className="overflow-hidden">
+                    <div className="pt-12 border-t border-hotel-abysse/5">
+                        <div className="flex justify-between items-center mb-10">
+                            <h2 className="text-3xl font-serif italic text-hotel-abysse">
+                                Disponibilités pour {nights} {nights > 1 ? 'nuits' : 'nuit'}
+                            </h2>
+                            <button
+                                onClick={() => setShowRooms(false)}
+                                className="text-[10px] uppercase tracking-widest text-hotel-abysse/40 hover:text-hotel-gold transition-colors cursor-pointer p-2"
+                            >
+                                Fermer ✕
+                            </button>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                            {ROOMS.map(room => (
+                                <div key={room.id} className="group flex flex-col">
+                                    <div className="relative aspect-3/4 mb-6 overflow-hidden">
+                                        <Image
+                                            src={room.image} alt={room.name} fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                                        />
+                                    </div>
+                                    <h3 className="font-serif text-xl text-hotel-abysse mb-1">{room.name}</h3>
+                                    <p className="text-hotel-gold font-serif italic text-lg mb-4 cursor-default">
+                                        {room.price * nights}€
+                                        <span className="text-[10px] font-sans uppercase tracking-widest not-italic text-hotel-abysse/40 ml-2">Total</span>
+                                    </p>
+                                    <button className="text-[10px] uppercase tracking-[0.2em] font-bold text-hotel-abysse border-b border-hotel-abysse/10 pb-2 hover:border-hotel-gold transition-all w-fit cursor-pointer">
+                                        Sélectionner
+                                    </button>
                                 </div>
-                                <h3 className="font-bold text-gray-900">{room.name}</h3>
-                                <p className="text-gray-500 text-sm mb-2">{room.price}€ / nuit</p>
-                                <p className="text-blue-700 font-extrabold text-lg mb-4">
-                                    Total : {room.price * nights}€
-                                </p>
-                                <button
-                                    onClick={() => handleSelect(room)}
-                                    className="w-full py-2 bg-slate-100 text-slate-800 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition"
-                                >
-                                    Sélectionner
-                                </button>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
-            )}
+            </div>
         </div>
     );
 }

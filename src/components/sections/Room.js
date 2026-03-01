@@ -37,7 +37,7 @@ export default function Rooms() {
                   <span className="text-sm font-sans uppercase tracking-widest not-italic mr-2">À partir de</span>
                   {room.price}€
                 </p>
-                <button className="group relative text-[10px] uppercase tracking-[0.2em] font-sans font-bold text-hotel-abysse hover:text-hotel-gold transition-colors duration-500 cursor-pointer w-fit pb-2">
+                <button className="group relative text-[10px] uppercase tracking-[0.2em] font-sans font-bold text-hotel-abysse transition-colors duration-500 cursor-pointer w-fit pb-2">
                   Découvrir la suite
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-hotel-gold transition-all duration-500 group-hover:w-full"></span>
                 </button>

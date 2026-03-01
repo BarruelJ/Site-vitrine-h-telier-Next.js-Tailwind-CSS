@@ -27,7 +27,7 @@ export default function Features() {
                   src={service.image}
                   alt={service.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                  className="object-cover hover:scale-105 transition-transform duration-700 cursor-pointer"
                 />
               </div>
 
