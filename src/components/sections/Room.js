@@ -3,7 +3,7 @@ import { ROOMS } from '@/data/roomsData';
 
 export default function Rooms() {
   return (
-    <section className="py-32 bg-white px-6">
+    <section id="rooms"className="py-32 bg-white px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <span className="text-hotel-gold uppercase tracking-[0.3em] text-[10px] font-sans block mb-4">Sérénité</span>

@@ -2,7 +2,7 @@ import { ABOUT_CONTENT } from "@/data/ui";
 
 export default function About() {
   return (
-    <section className="py-24 md:py-32  bg-hotel-sable text-center">
+    <section id="about" className="py-24 md:py-32  bg-hotel-sable text-center">
       <div className="max-w-3xl mx-auto px-6">
         
         <span className="text-hotel-gold uppercase tracking-[0.3em] text-[10px] font-sans block mb-4">

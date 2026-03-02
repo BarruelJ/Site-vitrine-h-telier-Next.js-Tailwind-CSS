@@ -3,7 +3,7 @@ import { HERO_CONTENT } from "@/data/ui";
 
 export default function Hero() {
   return (
-    <section className="relative h-[85vh] w-full flex items-center justify-center text-white">
+    <section id="hero" className="relative h-[85vh] w-full flex items-center justify-center text-white">
       <Image
         src={HERO_CONTENT.image}
         alt={HERO_CONTENT.title}
@@ -13,7 +13,7 @@ export default function Hero() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/60"></div>
 
       <div className="relative z-10 text-center px-6">
         <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 drop-shadow-lg">
@@ -23,9 +23,12 @@ export default function Hero() {
           {HERO_CONTENT.subtitle}
         </p>
 
-        <button className="mt-10 bg-hotel-white/10 backdrop-blur-md text-hotel-white px-8 py-4 rounded-full font-sans uppercase tracking-[0.2em] text-xs border border-hotel-white/30 hover:border-hotel-gold transition-all duration-500 active:scale-95 cursor-pointer">
+        <a
+          href="#rooms"
+          className="mt-10 inline-block bg-hotel-white/10 backdrop-blur-md text-hotel-white px-8 py-4 rounded-full font-sans uppercase tracking-[0.2em] text-xs border border-hotel-white/30 hover:border-hotel-gold transition-all duration-500 active:scale-95 cursor-pointer"
+        >
           {HERO_CONTENT.cta}
-        </button>
+        </a>
       </div>
     </section>
   );

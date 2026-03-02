@@ -3,7 +3,7 @@ import { FEATURES } from "@/data/ui";
 
 export default function Features() {
   return (
-    <section className="py-32 bg-hotel-sable px-6 overflow-hidden">
+    <section id="features" className="py-32 bg-hotel-sable px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

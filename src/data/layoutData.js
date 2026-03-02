@@ -1,8 +1,8 @@
 export const NAV_LINKS = [
-  { label: "L'Hôtel", href: "#" },
+  { label: "L'Hôtel", href: "#about" },
   { label: "Nos Chambres", href: "#rooms" },
   { label: "Le Restaurant", href: "#restaurant" },
-  { label: "Réservation", href: "#booking" },
+  { label: "Réservation", href: "#hero" },
 ];
 
 export const CONTACT_INFO = [

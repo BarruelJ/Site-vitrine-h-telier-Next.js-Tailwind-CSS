@@ -3,7 +3,7 @@ import { CARTE_RESTAURANT } from '@/data/restaurantData';
 
 export default function Restaurant() {
     return (
-        <section className="py-32 bg-hotel-sable px-6">
+        <section id="restaurant" className="py-32 bg-hotel-sable">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-20">
                     <span className="text-hotel-gold uppercase tracking-[0.3em] text-[10px] font-sans block mb-4">{CARTE_RESTAURANT.subtitle}</span>
@@ -11,26 +11,28 @@ export default function Restaurant() {
                 </div>
             </div>
 
-            <div className="w-full md:w-3/5 overflow-hidden mx-auto shadow-hotel-abysse/10">
+            <div className="relative w-full overflow-hidden">
+                <div className="absolute inset-0 bg-black/40"></div>
                 <Image
                     src="/images/restaurant.jpg"
                     alt="L'ambiance de notre restaurant"
                     width={1920}
                     height={1080}
-                    className="object-cover hover:scale-105 transition-transform duration-1000 ease-out w-full h-full"
+                    className="object-cover max-h-[62vh] hover:scale-105 transition-transform duration-1000 ease-out w-full h-full"
                 />
             </div>
 
 
-            <div className="mb-20 mt-70 flex flex-col items-center gap-12">
+            <div className="mb-20 mt-40 flex flex-col items-center gap-12">
+                <div className="w-px h-20 bg-linear-to-b from-hotel-gold to-transparent mb-8"></div>
                 <h2 className="text-5xl md:text-6xl font-serif text-hotel-abysse max-w-2xl leading-tight">{CARTE_RESTAURANT.titleDescription}</h2>
                 <span className="text-hotel-gold uppercase tracking-[0.3em] text-[10px] font-sans block mb-4">{CARTE_RESTAURANT.description}</span>
             </div>
 
-            <div className="flex flex-col items-center gap-24 mb-68">
+            <div className="flex flex-col items-center gap-24 mb-40">
                 {CARTE_RESTAURANT.menuRestaurant.map((plat, index) => (
                     <div key={plat.id} className="w-full md:w-1/2 flex flex-col justify-between h-full py-4">
-                        <span className="w-1/2 h-px bg-hotel-gold/20 mx-auto mb-12"></span>
+                        <span className="w-1/2 h-px bg-linear-to-r from-transparent via-hotel-gold to-transparent mx-auto mb-12 block"></span>
                         <div>
                             <span className="text-hotel-gold font-serif italic text-sm">0{index + 1}</span>
                             <h3 className="text-3xl font-serif font-bold text-hotel-abysse mb-4">{plat.name}</h3>
@@ -43,6 +45,12 @@ export default function Restaurant() {
 
                     </div>
                 ))}
+            </div>
+
+            <div className="py-40 flex flex-col items-center text-center px-6">
+                <div className="w-px h-20 bg-linear-to-b from-transparent to-hotel-gold mb-8"></div>
+                <h3 className="font-serif text-3xl text-hotel-abysse mb-6 italic">Une table face à l'horizon ?</h3>
+                <p className="font-sans uppercase tracking-[0.2em] text-[10px] text-hotel-gold">Réservez votre expérience sensorielle</p>
             </div>
 
         </section>
