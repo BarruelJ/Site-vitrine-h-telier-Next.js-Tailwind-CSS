@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased overflow-x-hidden relative">
         <Navbar /> {}
         {children}
         <Footer />

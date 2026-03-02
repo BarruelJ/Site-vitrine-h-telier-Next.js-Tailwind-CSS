@@ -2,7 +2,7 @@ import { FOOTER_SECTIONS } from "@/data/layoutData";
 
 export default function Footer() {
   return (
-    <footer className="bg-hotel-abysse text-hotel-white/60 py-24 px-6 border-t border-hotel-white/5">
+    <footer className="bg-hotel-abysse text-hotel-white/60 py-24 pt-40 px-6 border-t border-hotel-white/5 relative z-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
 
         <div className="flex flex-col gap-6">
@@ -10,7 +10,7 @@ export default function Footer() {
             Mer & Horizon
           </h3>
           <p className="text-xs leading-relaxed font-sans max-w-xs tracking-wide">
-            Une parenthèse enchantée sur la côte d'Opale. Luxe, calme et volupté depuis 1954.
+            Une parenthèse enchantée sur la côte d'Opale. Luxe, calme et sérénité depuis 1954.
           </p>
         </div>
 
