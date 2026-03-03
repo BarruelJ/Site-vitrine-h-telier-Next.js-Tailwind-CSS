@@ -12,7 +12,7 @@ export default function Rooms() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-12">
+        <div className="grid grid-cols-1 gap-12">
           {ROOMS.map((room, index) => (
             <div key={room.id} className={`flex flex-col md:flex-row items-center gap-12 mb-68 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}  >
               <div className="w-full md:w-3/5 relative h-140 overflow-hidden shadow-sm">

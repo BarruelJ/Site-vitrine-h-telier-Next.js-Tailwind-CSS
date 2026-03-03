@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { ROOMS } from '@/data/roomsData';
+import { isValidEmail, isValidPhone, isValidName } from '@/utils/validators';
 
 export default function BookingForm() {
     const [checkIn, setCheckIn] = useState("");
@@ -10,6 +11,7 @@ export default function BookingForm() {
     const [step, setStep] = useState('search');
     const today = new Date().toISOString().split('T')[0];
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const [formData, setFormData] = useState({
         nomComplet: '',
@@ -29,25 +31,27 @@ export default function BookingForm() {
     };
 
     const isFormValid = () => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^[0-9+ \(\)]{8,}$/;
-
         return (
-            formData.nomComplet.trim().length >= 2 &&
-            formData.prenom.trim().length >= 2 &&
-            emailRegex.test(formData.email) &&
-            phoneRegex.test(formData.telephone)
+            isValidName(formData.nomComplet) &&
+            isValidName(formData.prenom) &&
+            isValidEmail(formData.email) &&
+            isValidPhone(formData.telephone)
         );
     };
 
-    const handleConfirm = () => {
+    const handleConfirm = async () => {
         setIsLoading(true);
+        setError(null);
 
-        /* Simulation chargement */
-        setTimeout(() => {
-            setIsLoading(false);
+        try {
+            // 
+            await new Promise((resolve) => setTimeout(resolve, 2000));
             setStep('success');
-        }, 2000);
+        } catch (err) {
+            setError("Une erreur est survenue. Veuillez réessayer.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const nights = (() => {
@@ -100,6 +104,7 @@ export default function BookingForm() {
                                     Disponibilités pour {nights} nuits
                                 </h2>
                                 <button
+                                    aria-label="Ferme la liste des chambres"
                                     onClick={() => setStep('search')}
                                     className="text-[10px] uppercase tracking-widest text-hotel-abysse/40 hover:text-hotel-gold transition-colors cursor-pointer p-2"
                                 >
@@ -152,51 +157,51 @@ export default function BookingForm() {
                                         value={formData.nomComplet}
                                         onChange={handleInputChange}
                                         placeholder="Nom complet"
-                                        className={`bg-transparent border-b py-2 text-xs w-full focus:outline-none transition-colors font-sans placeholder:text-hotel-abysse/40 text-hotel-abysse ${formData.nomComplet && formData.nomComplet.trim().length < 2
+                                        className={`bg-transparent border-b py-2 text-xs w-full focus:outline-none transition-colors font-sans placeholder:text-hotel-abysse/40 text-hotel-abysse ${formData.nomComplet && !isValidName(formData.nomComplet)
                                             ? 'border-red-400'
                                             : 'border-hotel-abysse/20 focus:border-hotel-gold'
                                             }`}
                                     />
-                                    {formData.nomComplet && formData.nomComplet.trim().length < 2 && (
+                                    {formData.nomComplet && !isValidName(formData.nomComplet) && (
                                         <span className="text-[10px] text-red-400 font-sans italic">
                                             2 caractères minimum
                                         </span>
                                     )}
                                 </div>
+
                                 <div className="flex flex-col gap-1">
                                     <input
                                         name="prenom"
                                         value={formData.prenom}
                                         onChange={handleInputChange}
                                         placeholder="Prénom"
-                                        className={`bg-transparent border-b py-2 text-xs w-full focus:outline-none transition-colors font-sans placeholder:text-hotel-abysse/40 text-hotel-abysse ${formData.prenom && formData.prenom.trim().length < 2
+                                        className={`bg-transparent border-b py-2 text-xs w-full focus:outline-none transition-colors font-sans placeholder:text-hotel-abysse/40 text-hotel-abysse ${formData.prenom && !isValidName(formData.prenom)
                                             ? 'border-red-400'
                                             : 'border-hotel-abysse/20 focus:border-hotel-gold'
                                             }`}
                                     />
-                                    {formData.prenom && formData.prenom.trim().length < 2 && (
+                                    {formData.prenom && !isValidName(formData.prenom) && (
                                         <span className="text-[10px] text-red-400 font-sans italic">
                                             2 caractères minimum
                                         </span>
                                     )}
                                 </div>
-                                <div className="flex flex-col gap-1">
 
+                                <div className="flex flex-col gap-1">
                                     <input
                                         name="email"
                                         type="email"
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         placeholder="votre@email.com"
-                                        className={`bg-transparent border-b py-2 text-xs w-full focus:outline-none transition-colors font-sans placeholder:text-hotel-abysse/40 text-hotel-abysse ${
-                                            formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
-                                                ? 'border-red-400'
-                                                : 'border-hotel-abysse/20 focus:border-hotel-gold'
+                                        className={`bg-transparent border-b py-2 text-xs w-full focus:outline-none transition-colors font-sans placeholder:text-hotel-abysse/40 text-hotel-abysse ${formData.email && !isValidEmail(formData.email)
+                                            ? 'border-red-400'
+                                            : 'border-hotel-abysse/20 focus:border-hotel-gold'
                                             }`}
                                     />
 
                                     {/* Erreur format email */}
-                                    {formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && (
+                                    {formData.email && !isValidEmail(formData.email) && (
                                         <span className="text-[10px] text-red-400 font-sans italic">
                                             Veuillez entrer une adresse email valide
                                         </span>
@@ -209,14 +214,14 @@ export default function BookingForm() {
                                         value={formData.telephone}
                                         onChange={handleInputChange}
                                         placeholder="votre numéro de téléphone"
-                                        className={`bg-transparent border-b py-2 text-xs w-full focus:outline-none transition-colors font-sans placeholder:text-hotel-abysse/40 text-hotel-abysse ${formData.telephone && !/^[0-9+ \(\)]{8,}$/.test(formData.telephone)
+                                        className={`bg-transparent border-b py-2 text-xs w-full focus:outline-none transition-colors font-sans placeholder:text-hotel-abysse/40 text-hotel-abysse ${formData.telephone && !isValidPhone(formData.telephone)
                                             ? 'border-red-400'
                                             : 'border-hotel-abysse/20 focus:border-hotel-gold'
                                             }`}
                                     />
 
                                     {/* Erreur format téléphone */}
-                                    {formData.telephone && !/^\+?[0-9\s\-\(\)]{10,}$/.test(formData.telephone) && (
+                                    {formData.telephone && !isValidPhone(formData.telephone) && (
                                         <span className="text-[10px] text-red-400 font-sans italic">
                                             Veuillez entrer un numéro de téléphone valide
                                         </span>
@@ -227,8 +232,8 @@ export default function BookingForm() {
                                 disabled={!isFormValid() || isLoading}
                                 onClick={handleConfirm}
                                 className={`mt-12 w-full md:w-auto px-12 py-4 text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-500 flex items-center justify-center gap-3 ${isFormValid() && !isLoading
-                                        ? 'bg-hotel-abysse text-white hover:bg-hotel-gold cursor-pointer'
-                                        : 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-50'
+                                    ? 'bg-hotel-abysse text-white hover:bg-hotel-gold cursor-pointer'
+                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-50'
                                     }`}
                             >
                                 {isLoading ? (

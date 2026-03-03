@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hôtel Mer & Horizon
 
-## Getting Started
+Site vitrine d'un hôtel de luxe fictif.  
+Projet d'entraînement Next.js + Tailwind CSS v4.
 
-First, run the development server:
+## Stack
+Next.js
+Tailwind CSS v4
+Google Fonts (Playfair Display, Inter)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Fonctionnalités
+Formulaire de réservation multi-étapes
+Validation des champs en temps réel
+Design responsive
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+hotel-booking/
+├── src/
+│   ├── app/
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── page.js
+│   │   └── layout.js
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Footer.js
+│   │   │   └── Navbar.js
+│   │   └── sections/
+│   │       ├── About.js
+│   │       ├── BookingForm.js
+│   │       ├── Features.js
+│   │       ├── Hero.js
+│   │       ├── Restaurant.js
+│   │       └── Room.js
+│   ├── data/
+│   │   ├── layoutData.js
+│   │   ├── restaurantData.js
+│   │   ├── roomsData.js
+│   │   └── ui.js
+│   └── utils/
+│       └── validators.js
+├── public/
+│   └── images/
+│       ├── imgRooms/
+│       │   ├── roomChambres.jpg
+│       │   ├── roomMer.jpg
+│       │   └── roomSuite.jpg
+│       ├── services/
+│       │   ├── gastronomy.jpg
+│       │   ├── pool.jpg
+│       │   └── spa.jpg
+│       ├── hero.jpg
+│       └── restaurant.jpg
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── .stylelintrc.json
+├── .gitignore
+├── node_modules/
+└── README.md

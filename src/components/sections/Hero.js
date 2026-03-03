@@ -6,7 +6,7 @@ export default function Hero() {
     <section id="hero" className="relative h-[85vh] w-full flex items-center justify-center text-white">
       <Image
         src={HERO_CONTENT.image}
-        alt={HERO_CONTENT.title}
+        alt={HERO_CONTENT.imageAlt}
         fill
         priority
         className="object-cover"

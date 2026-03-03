@@ -2,7 +2,8 @@ export const HERO_CONTENT = {
     title: "L'Éveil des Sens",
     subtitle: "Découvrez un refuge d'exception où le luxe rencontre la sérénité.",
     cta: "Découvrir nos suites",
-    image: "/images/hero.jpg"
+    image: "/images/hero.jpg",
+    imageAlt :"Vue panoramique de l'hôtel"
 };
 
 export const ABOUT_CONTENT = {

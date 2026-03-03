@@ -20,9 +20,9 @@ export default function Navbar() {
         ))}
       </div>
 
-      <button className="bg-hotel-abysse text-hotel-white px-8 py-3 rounded-full text-[10px] uppercase tracking-widest font-bold hover:bg-hotel-gold transition-all duration-300 cursor-pointer active:scale-95 shadow-sm">
+      <a href="#booking" className="bg-hotel-abysse text-hotel-white px-8 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-hotel-gold transition-all duration-300 cursor-pointer active:scale-95 shadow-sm">
         Réserver
-      </button>
+      </a>
     </nav>
   );
 }

@@ -22,9 +22,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
       <body className="antialiased relative">
-        <Navbar /> {}
+        <header><Navbar /></header>
         {children}
-        <Footer />
+        <footer><Footer /></footer>
       </body>
     </html>
   );

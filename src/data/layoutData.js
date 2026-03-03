@@ -2,7 +2,7 @@ export const NAV_LINKS = [
   { label: "L'Hôtel", href: "#about" },
   { label: "Nos Chambres", href: "#rooms" },
   { label: "Le Restaurant", href: "#restaurant" },
-  { label: "Réservation", href: "#hero" },
+  { label: "Réservation", href: "#booking" },
 ];
 
 export const CONTACT_INFO = [

@@ -2,7 +2,7 @@ import { FOOTER_SECTIONS } from "@/data/layoutData";
 
 export default function Footer() {
   return (
-    <footer className="bg-hotel-abysse text-hotel-white/60 py-24 pt-40 px-6 border-t border-hotel-white/5 relative z-10">
+    <div className="bg-hotel-abysse text-hotel-white/60 py-24 pt-40 px-6 border-t border-hotel-white/5 relative z-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
 
         <div className="flex flex-col gap-6">
@@ -43,6 +43,8 @@ export default function Footer() {
           <div className="relative group">
             <input
               type="email"
+              id="newsletter-email"
+              aria-label="Adresse email pour la newsletter"
               placeholder="votre@email.com"
               className="bg-transparent border-b border-hotel-white/20 py-2 text-xs w-full focus:outline-none focus:border-hotel-gold transition-colors font-sans placeholder:text-hotel-white/30"
             />
@@ -61,6 +63,6 @@ export default function Footer() {
           <a href="#" className="hover:text-hotel-gold transition-colors">Confidentialité</a>
         </div>
       </div>
-    </footer>
+    </div>
   );
 }
