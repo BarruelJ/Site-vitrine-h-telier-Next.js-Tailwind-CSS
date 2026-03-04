@@ -1,3 +1,7 @@
+import { client } from '@/sanity/lib/client'
+import { ROOMS_QUERY } from '@/sanity/lib/queries'
+
+
 import About from '@/components/sections/About';
 import BookingForm from '@/components/sections/BookingForm';
 import Features from '@/components/sections/Features';
@@ -6,7 +10,9 @@ import Rooms from '@/components/sections/Room';
 import Restaurant from '@/components/sections/Restaurant';
 import { Suspense } from 'react';
 
-export default function Home() {
+export default  async function Home() {
+  const rooms = await client.fetch(ROOMS_QUERY);
+  console.log("Rooms from Sanity:", rooms);
   return (
     <main className="min-h-screen bg-hotel-sable">
 
@@ -24,7 +30,7 @@ export default function Home() {
 
       <Features />
 
-      <Rooms />
+      <Rooms rooms={rooms} />
 
       <Restaurant />
 

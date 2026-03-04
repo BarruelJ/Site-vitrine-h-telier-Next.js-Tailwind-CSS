@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ROOMS } from '@/data/roomsData';
+import {urlFor} from "@/sanity/lib/image";
 
-export default function Rooms() {
+export default function Rooms({rooms}) {
   return (
     <section id="rooms"className="py-32 bg-white px-6">
       <div className="max-w-7xl mx-auto">
@@ -13,11 +13,11 @@ export default function Rooms() {
         </div>
 
         <div className="grid grid-cols-1 gap-12">
-          {ROOMS.map((room, index) => (
-            <div key={room.id} className={`flex flex-col md:flex-row items-center gap-12 mb-68 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}  >
+          {rooms.map((room, index) => (
+            <div key={room._id} className={`flex flex-col md:flex-row items-center gap-12 mb-68 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}  >
               <div className="w-full md:w-3/5 relative h-140 overflow-hidden shadow-sm">
                 <Image
-                  src={room.image}
+                  src={urlFor(room.image).width(1200).quality(90).url()}
                   alt={room.name}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-700"
