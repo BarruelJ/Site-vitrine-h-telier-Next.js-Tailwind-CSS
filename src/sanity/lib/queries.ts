@@ -9,3 +9,12 @@ export const ROOMS_QUERY = defineQuery(`
     image
   }
 `)
+
+export const RESTAU_QUERY = defineQuery(`
+  *[_type == "restaurant"]{
+    _id,
+    name,
+    price,
+    description,
+  }
+`)

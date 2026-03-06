@@ -1,5 +1,6 @@
 import { client } from '@/sanity/lib/client'
-import { ROOMS_QUERY } from '@/sanity/lib/queries'
+import { ROOMS_QUERY, RESTAU_QUERY } from '@/sanity/lib/queries'
+
 
 
 import About from '@/components/sections/About';
@@ -12,7 +13,8 @@ import { Suspense } from 'react';
 
 export default  async function Home() {
   const rooms = await client.fetch(ROOMS_QUERY);
-  console.log("Rooms from Sanity:", rooms);
+  const restaurant = await client.fetch(RESTAU_QUERY);
+
   return (
     <main className="min-h-screen bg-hotel-sable">
 
@@ -32,7 +34,7 @@ export default  async function Home() {
 
       <Rooms rooms={rooms} />
 
-      <Restaurant />
+      <Restaurant restaurant={restaurant} />
 
       {/* CTA */}
       <section className="py-24 flex flex-col items-center text-center px-6 bg-hotel-sable">

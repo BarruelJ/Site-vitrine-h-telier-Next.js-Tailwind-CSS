@@ -17,7 +17,7 @@ export default function Rooms({rooms}) {
             <div key={room._id} className={`flex flex-col md:flex-row items-center gap-12 mb-68 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}  >
               <div className="w-full md:w-3/5 relative h-140 overflow-hidden shadow-sm">
                 <Image
-                  src={urlFor(room.image).width(1200).quality(90).url()}
+                  src={urlFor(room.image).width(1920).quality(100).url()}
                   alt={room.name}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-700"
